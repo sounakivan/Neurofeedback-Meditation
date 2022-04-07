@@ -24,8 +24,8 @@ namespace dirox.emotiv.controller
         public override void Activate()
         {
             Debug.Log("ExamplesBoard: Activate");
-            if (markersDemo.IsActive)
-                markersDemo.Deactivate();
+            //if (markersDemo.IsActive)
+                //markersDemo.Deactivate();
             if (dataSubscriber.IsActive)
                 dataSubscriber.Deactivate();
             base.Activate();

@@ -13,6 +13,7 @@ namespace dirox.emotiv.controller
     public class DataSubscriber : BaseCanvasView
     {
         DataStreamManager _dataStreamMgr = DataStreamManager.Instance;
+        GameControl gameStates;
 
         [SerializeField] public Text focusPMData;       // performance metric data
         [SerializeField] public Text relaxPMData;       // performance metric data
@@ -70,6 +71,9 @@ namespace dirox.emotiv.controller
             //Debug.Log("onPMSubBtnClick");
             List<string> dataStreamList = new List<string>(){DataStreamName.PerformanceMetrics};
             _dataStreamMgr.SubscribeMoreData(dataStreamList);
+
+            gameStates.meditationStarted = true;
+            Debug.Log("meditation started");
         }
 
         /// <summary>
