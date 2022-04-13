@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using EmotivUnityPlugin;
 using Zenject;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace dirox.emotiv.controller
 {
@@ -13,14 +14,26 @@ namespace dirox.emotiv.controller
     public class DataSubscriber : BaseCanvasView
     {
         DataStreamManager _dataStreamMgr = DataStreamManager.Instance;
-        GameControl gameStates;
+        //GameControl gameStates;
 
-        [SerializeField] public Text focusPMData;       // performance metric data
-        [SerializeField] public Text relaxPMData;       // performance metric data
-        [SerializeField] public Text stressPMData;       // performance metric data
+        [SerializeField] GameObject emotivCanvas;
+        [SerializeField] GameObject mirror;
+        [SerializeField] GameObject lightOrb;
+        [SerializeField] GameObject lefthand;
+        [SerializeField] GameObject righthand;
+
+        [SerializeField] public float focus;       // performance metric data
+        [SerializeField] public float relax;       // performance metric data
 
         float _timerDataUpdate = 0;
         const float TIME_UPDATE_DATA = 1f;
+
+        public bool meditateOn = true;
+
+        private void Start()
+        {
+            startMeditation(meditateOn);
+        }
 
         void Update() 
         {
@@ -41,15 +54,14 @@ namespace dirox.emotiv.controller
                 
                 double fdata = DataStreamManager.Instance.GetPMData("foc");
                 double rdata = DataStreamManager.Instance.GetPMData("rel");
-                double sdata = DataStreamManager.Instance.GetPMData("str");
 
-                Debug.Log("======" + fdata + rdata + sdata);
-                
+                //Debug.Log("======" + fdata + rdata + sdata);
+
                 onPMSubBtnClick();
+
                 if (fdata >= 0 && fdata <= 1) {
-                    focusPMData.text = fdata.ToString("0.##");
-                    relaxPMData.text = rdata.ToString("0.##");
-                    stressPMData.text = sdata.ToString("0.##");
+                    focus = (float)fdata;
+                    relax = (float)rdata;
                 }
                 
             }
@@ -72,7 +84,20 @@ namespace dirox.emotiv.controller
             List<string> dataStreamList = new List<string>(){DataStreamName.PerformanceMetrics};
             _dataStreamMgr.SubscribeMoreData(dataStreamList);
 
-            gameStates.meditationStarted = true;
+            startMeditation(true);
+        }
+
+        public void startMeditation(bool visible)
+        {
+            //set onboarding components visibility
+            emotivCanvas.GetComponent<Canvas>().enabled = !visible;
+            lefthand.GetComponent<XRInteractorLineVisual>().enabled = !visible;
+            righthand.GetComponent<XRInteractorLineVisual>().enabled = !visible;
+            
+            //set meditation components visibility
+            mirror.SetActive(visible);
+            lightOrb.SetActive(visible);
+            
             Debug.Log("meditation started");
         }
 
