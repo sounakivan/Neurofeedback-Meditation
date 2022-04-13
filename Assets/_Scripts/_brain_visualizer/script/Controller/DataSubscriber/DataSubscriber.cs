@@ -28,11 +28,12 @@ namespace dirox.emotiv.controller
         float _timerDataUpdate = 0;
         const float TIME_UPDATE_DATA = 1f;
 
-        public bool meditateOn = true;
+        public bool meditateOn = false;
 
         private void Start()
         {
-            startMeditation(meditateOn);
+            //startMeditation(meditateOn);
+            meditateOn = false;
         }
 
         void Update() 
@@ -54,8 +55,6 @@ namespace dirox.emotiv.controller
                 
                 double fdata = DataStreamManager.Instance.GetPMData("foc");
                 double rdata = DataStreamManager.Instance.GetPMData("rel");
-
-                //Debug.Log("======" + fdata + rdata + sdata);
 
                 onPMSubBtnClick();
 
@@ -97,7 +96,8 @@ namespace dirox.emotiv.controller
             //set meditation components visibility
             mirror.SetActive(visible);
             lightOrb.SetActive(visible);
-            
+
+            meditateOn = true;
             Debug.Log("meditation started");
         }
 

@@ -302,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1789544362855598, guid: f3be4ab073102df4b96d4206f3dae600, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1952240764114542, guid: f3be4ab073102df4b96d4206f3dae600, type: 3}
       propertyPath: m_IsActive
@@ -621,8 +621,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 392350480}
-  - component: {fileID: 392350481}
   - component: {fileID: 392350482}
+  - component: {fileID: 392350481}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -656,7 +656,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569b08223e89e4247b32c62702974dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  datasub: {fileID: 7990121300927948395}
+  movableAvatar: {fileID: 0}
+  stationaryAvatar: {fileID: 0}
+  playerCam: {fileID: 0}
   voice: {fileID: 392350482}
+  music: {fileID: 402282281}
+  startvolume: 0.1
+  endvolume: 0.8
   intro: {fileID: 8300000, guid: e9830f3cac54fb246820754646bd0640, type: 3}
   outro: {fileID: 8300000, guid: e000c6fe9719fa947a5cf090fc4df00f, type: 3}
   voices:
@@ -686,6 +693,7 @@ MonoBehaviour:
     you.  Feel that the light is purifying you.  Stay with this feeling.
   timeText: {fileID: 430997740}
   durationbBetweenGuidance: 64
+  obe: 0
 --- !u!82 &392350482
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2356,6 +2364,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -3480699329000672020, guid: 2317e6dbd3e53584a93cf0eb8ac6451e, type: 3}
   m_PrefabInstance: {fileID: 1855019733}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1244898576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4075673675397975948, guid: 2317e6dbd3e53584a93cf0eb8ac6451e, type: 3}
+  m_PrefabInstance: {fileID: 1855019733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1244898579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244898576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6cd5729a367bc442ade5f5373b69bb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: c5c6a6113a4cd1949b682778465dd643, type: 2}
+  eeg: {fileID: 7990121300927948395}
+  focusData: 0
+  relaxData: 0
+  lerpDuration: 600
+  focAmp: 0
+  relFre: 0
+  startcolor: {r: 0.7830189, g: 0.15069416, b: 0.5674537, a: 0}
+  endcolor: {r: 0.67673546, g: 0.79789245, b: 0.8207547, a: 0}
+  eegActive: 0
 --- !u!1 &1288971763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2595,7 +2630,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.67, y: 2.023}
+  m_AnchoredPosition: {x: -1.622, y: 2.353}
   m_SizeDelta: {x: 833, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1502584682
@@ -5028,7 +5063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224549283593450300, guid: 5ab790ec77d6549709f962ce62b80060, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00091552734
+      value: 0.0008544922
       objectReference: {fileID: 0}
     - target: {fileID: 224549283593450300, guid: 5ab790ec77d6549709f962ce62b80060, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8799,7 +8834,7 @@ MonoBehaviour:
   righthand: {fileID: 575441736}
   focus: 0
   relax: 0
-  meditateOn: 1
+  meditateOn: 0
 --- !u!114 &7990121300927948396
 MonoBehaviour:
   m_ObjectHideFlags: 0

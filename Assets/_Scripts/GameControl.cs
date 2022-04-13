@@ -6,10 +6,17 @@ using dirox.emotiv.controller;
 
 public class GameControl : MonoBehaviour
 {
-    //[SerializeField] DataSubscriber datasub;
-    
+    [SerializeField] DataSubscriber datasub;
+    [SerializeField] GameObject movableAvatar;
+    [SerializeField] GameObject stationaryAvatar;
+    [SerializeField] GameObject playerCam;
+
     //captions text and voiceover audio variables
     [SerializeField] AudioSource voice;
+    [SerializeField] AudioSource music;
+
+    public float startvolume = 0.1f;
+    public float endvolume = 0.8f;
 
     public AudioClip intro;
     public AudioClip outro;
@@ -27,9 +34,11 @@ public class GameControl : MonoBehaviour
     private float duration = 0;
     private int index = 0;
 
+    public bool obe = false;
+
     private void Update()
     {
-        if (true)
+        if (datasub.meditateOn == true)
         {
             seconds += Time.deltaTime;
 
@@ -40,6 +49,7 @@ public class GameControl : MonoBehaviour
             timeText.text = minuteString + ":" + secondString;
 
             playVoice();
+            music.volume = Mathf.Lerp(startvolume, endvolume, seconds / 600);
         }
         //Debug.Log(datasub.meditateOn);
     }
@@ -69,7 +79,7 @@ public class GameControl : MonoBehaviour
         {
             caption.text = introCaps[3];
         }
-        else if (seconds > 58 && seconds <= 64)
+        else if (seconds > 58 && seconds <= 68)
         {
             duration += Time.deltaTime;
 
@@ -78,9 +88,10 @@ public class GameControl : MonoBehaviour
                 voice.PlayOneShot(voices[0]);
                 caption.text = guidance[0];
                 duration = 0;
+                index = 1;
             }
         }
-        else if (seconds > 64 && seconds <= 600)
+        else if (seconds > 68 && seconds <= 600)
         {
             duration += Time.deltaTime;
 
@@ -103,8 +114,26 @@ public class GameControl : MonoBehaviour
             if (duration > 6)
             {
                 voice.PlayOneShot(outro);
+                caption.text = "Peace, peace, peace. GURU AUM.";
                 duration = 0;
             }
+
+            timeText.text = "Thank you";
+        }
+        else if (seconds > 610)
+        {
+            //movableAvatar.SetActive(false);
+            //stationaryAvatar.SetActive(true);
+            //float startpos;
+            //float endpos;
+
+            //if (obe)
+            //{
+            //    startpos = playerCam.transform.position.z;
+            //    obe = false;
+            //}
+
+            //playerCam.transform.position.z = Mathf.Lerp(startpos, endpos, 3);
         }
     }
 
