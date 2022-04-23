@@ -7,13 +7,12 @@ public class MindBodyInterface : MonoBehaviour
 {
     [SerializeField] Material material;
     [SerializeField] DataSubscriber eeg;
-
-    public float focusData;
-    public float relaxData;
+    GameControl game;
 
     private float timeElapsed = 0;
-    public float lerpDuration = 600;
-
+    private float lerpDuration;
+    private float focusData;
+    private float relaxData;
     public float focAmp;
     public float relFre;
     private Color fresnelcolor;
@@ -30,6 +29,8 @@ public class MindBodyInterface : MonoBehaviour
         fresnelcolor = startcolor;
         focAmp = 0.009f;
         relFre = 1f;
+
+        lerpDuration = game.meditationTime;
     }
 
     void Update()

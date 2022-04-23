@@ -35,7 +35,7 @@ public class LightScaler : MonoBehaviour
     {
         if (_IsBreathing == true)
         {
-            Debug.Log(_CurrentState);
+            //Debug.Log(_CurrentState);
             CheckState(Time.deltaTime / AntiSpeed);
             transform.localScale = new Vector3(_CurrentScale, _CurrentScale, _CurrentScale);
 

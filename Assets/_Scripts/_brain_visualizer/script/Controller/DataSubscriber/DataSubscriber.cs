@@ -33,7 +33,7 @@ namespace dirox.emotiv.controller
         private void Start()
         {
             //startMeditation(meditateOn);
-            meditateOn = false;
+            //meditateOn = false;
         }
 
         void Update() 
