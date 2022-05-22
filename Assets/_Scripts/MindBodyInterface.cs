@@ -7,7 +7,8 @@ public class MindBodyInterface : MonoBehaviour
 {
     [SerializeField] Material material;
     [SerializeField] DataSubscriber eeg;
-    GameControl game;
+    [SerializeField] MenuButton menu;
+    [SerializeField] GameControl game;
 
     private float timeElapsed = 0;
     private float lerpDuration;
@@ -20,6 +21,7 @@ public class MindBodyInterface : MonoBehaviour
     public Color endcolor;
 
     [SerializeField] private bool eegActive = false;
+    private bool meditating = false;
 
     void Start()
     {
@@ -29,13 +31,22 @@ public class MindBodyInterface : MonoBehaviour
         fresnelcolor = startcolor;
         focAmp = 0.009f;
         relFre = 1f;
-
-        lerpDuration = game.meditationTime;
     }
 
     void Update()
     {
-        if (eeg.meditateOn)
+        lerpDuration = game.meditationTime;
+
+        if (eeg == null)
+        {
+            meditating = menu.startMeditate;
+        }
+        else
+        {
+            meditating = eeg.meditateOn;
+        }
+        
+        if (meditating)
         {
             if (eegActive)
             {

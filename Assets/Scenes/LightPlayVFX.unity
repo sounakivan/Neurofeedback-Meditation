@@ -1175,12 +1175,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432893698}
-  m_LocalRotation: {x: 0.046961337, y: 1.2466485e-11, z: 7.0086287e-13, w: 0.9988967}
-  m_LocalPosition: {x: 0, y: -0.040256843, z: 0.22561081}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalRotation: {x: 0.046961337, y: 1.24832375e-11, z: 9.0112444e-13, w: 0.9988967}
+  m_LocalPosition: {x: 0, y: -0.50102735, z: -0.05755675}
+  m_LocalScale: {x: 0.8, y: 0.79999995, z: 0.79999995}
   m_Children: []
-  m_Father: {fileID: 1597931391}
-  m_RootOrder: 4
+  m_Father: {fileID: 1787051298}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &511762924 stripped
 Transform:
@@ -1717,6 +1717,15 @@ VisualEffect:
       - m_Value: 10000
         m_Name: Number of Particles
         m_Overridden: 1
+      - m_Value: 1
+        m_Name: Attraction Drag
+        m_Overridden: 1
+      - m_Value: 15
+        m_Name: Attraction Strength
+        m_Overridden: 1
+      - m_Value: 5
+        m_Name: Initial cycle duration
+        m_Overridden: 0
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -1781,12 +1790,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643979122}
-  m_LocalRotation: {x: 0.046961337, y: 1.2466485e-11, z: 7.0086287e-13, w: 0.9988967}
-  m_LocalPosition: {x: 0, y: -0.040256843, z: 0.22561081}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalRotation: {x: 0.046961337, y: 1.24832375e-11, z: 9.0112444e-13, w: 0.9988967}
+  m_LocalPosition: {x: 0, y: -0.50102735, z: -0.05755675}
+  m_LocalScale: {x: 0.8, y: 0.79999995, z: 0.79999995}
   m_Children: []
-  m_Father: {fileID: 1597931391}
-  m_RootOrder: 5
+  m_Father: {fileID: 1787051298}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &656704203 stripped
 RectTransform:
@@ -4058,6 +4067,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1789544362855598, guid: f3be4ab073102df4b96d4206f3dae600, type: 3}
   m_PrefabInstance: {fileID: 307929695}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1787051298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4478335872772606, guid: f3be4ab073102df4b96d4206f3dae600, type: 3}
+  m_PrefabInstance: {fileID: 307929695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1787051299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6209,7 +6223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224549283593450300, guid: 5ab790ec77d6549709f962ce62b80060, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00024414062
+      value: -0.0005340576
       objectReference: {fileID: 0}
     - target: {fileID: 224549283593450300, guid: 5ab790ec77d6549709f962ce62b80060, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -8,6 +8,7 @@ using RootMotion.FinalIK;
 public class GameControl : MonoBehaviour
 {
     [SerializeField] DataSubscriber datasub;
+    [SerializeField] MenuButton menu;
     [SerializeField] GameObject movableAvatar;
     [SerializeField] GameObject avatarLight;
     [SerializeField] GameObject selfLight;
@@ -30,6 +31,7 @@ public class GameControl : MonoBehaviour
     public AudioClip[] voices = new AudioClip[] {    };
 
     public Text caption;
+    public bool captionVisibility;
     public string[] introCaps = new string[] {    };
     public string[] guidance = new string[] {    };
 
@@ -43,6 +45,7 @@ public class GameControl : MonoBehaviour
     private int index = 0;
 
     public bool obe = false;
+    private bool begin = false;
 
     private void Start()
     {
@@ -53,7 +56,18 @@ public class GameControl : MonoBehaviour
 
     private void Update()
     {
-        if (datasub.meditateOn == true)
+        caption.enabled = captionVisibility;
+
+        if (datasub == null)
+        {
+            begin = menu.startMeditate;
+        }
+        else
+        {
+            begin = datasub.meditateOn;
+        }
+        
+        if (begin)
         {
             seconds += Time.deltaTime;
 
